@@ -109,7 +109,7 @@ UI Rendering (Calendar + Notes)
 
 ---
 
-👉 Used for:
+### Used for:
 
 * Monthly note display
 * Clean organization
