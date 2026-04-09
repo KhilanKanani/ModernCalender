@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import { motion } from "framer-motion";
 import { StickyNote, Save, Trash2, X } from "lucide-react";
 import { toast } from "sonner";
+import { Monitor } from "lucide-react";
 
 export default function Calendar() {
     const [currentMonth, setCurrentMonth] = useState(dayjs());
@@ -162,64 +163,41 @@ export default function Calendar() {
 
     return (
         <div>
+
             <div className="lg:hidden min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-100 via-white to-gray-200 text-gray-900 px-6">
 
                 {/* 🌈 SOFT GLOW */}
                 <div
-                    className="absolute w-[280px] h-[280px] rounded-full blur-[120px] opacity-20"
+                    className="absolute w-[260px] h-[260px] rounded-full blur-[120px] opacity-20"
                     style={{ background: current.color }}
                 />
 
-                {/* 🚀 LOGO */}
-                <div className="flex flex-col items-center z-10">
-                    <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg border border-gray-200">
-                        <img
-                            src="/KkLogo.png"
-                            alt="logo"
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
-
-                    <h1 className="mt-3 text-lg font-bold tracking-wide">
-                        Smart Calendar
-                    </h1>
+                {/* 💻 ICON */}
+                <div className="mt-6 z-10 text-gray-700">
+                    <Monitor size={40} />
                 </div>
 
-                {/* ⚠️ ICON */}
-                <div className="mt-5 text-4xl z-10">
-                    ⚠️
-                </div>
+                {/* 🧠 TEXT */}
+                <div className="mt-5 text-center space-y-3 max-w-xs z-10">
 
-                {/* 🧠 MAIN CONTENT */}
-                <div className="mt-4 text-center space-y-4 max-w-xs z-10">
-
-                    <h2 className="text-base font-semibold">
-                        Mobile View Not Supported
+                    <h2 className="text-sm font-semibold">
+                        Optimized for Desktop Experience
                     </h2>
 
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                        This application is designed for a larger screen to provide a better
-                        experience with complex interactions.
-                    </p>
-
-                    <p className="text-sm text-gray-500 leading-relaxed">
-                        Features like
-                        <span className="text-gray-900 font-medium"> date range selection</span>,
-                        <span className="text-gray-900 font-medium"> notes management</span>, and
-                        <span className="text-gray-900 font-medium"> advanced UI interactions</span>
-                        require more screen space.
-                    </p>
-
-                    <p className="text-sm text-gray-500">
-                        Please access this application on a laptop or desktop device.
+                    <p className="text-xs text-gray-600 leading-relaxed flex items-center justify-center gap-1">
+                        This application is designed for larger screens to ensure smooth interaction and better usability.
                     </p>
 
                 </div>
 
+                {/* 💎 SUB TEXT (PRO TOUCH) */}
+                <p className="mt-4 text-[11px] text-gray-500 text-center max-w-[220px]">
+                    For full access to features like scheduling, note management, and advanced navigation, please use a desktop device.
+                </p>
+
                 {/* © FOOTER */}
-                <div className="absolute bottom-6 text-center text-[11px] text-gray-500">
-                    <p>© {new Date().getFullYear()} Kk's Pvt Ltd. All rights reserved.</p>
-                    <p className="text-gray-400 mt-1">Designed & Developed by Kk's Team</p>
+                <div className="absolute bottom-6 text-center text-[10px] text-gray-500">
+                    <p>© {new Date().getFullYear()} Kk's Pvt Ltd. All rights reserved</p>
                 </div>
 
             </div>
