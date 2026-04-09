@@ -1,0 +1,7 @@
+
+:: Client ::
+
+=> npm i tailwindcss @tailwindcss/vite
+=> npm i dayjs
+=> npm i lucide-react
+=> npm i sonner
