@@ -64,7 +64,7 @@ UI Rendering (Calendar + Notes)
 
 ## 🎯 Date Selection System
 
-### 🟢 Range Selection
+### Range Selection
 
 * First click → Start Date
 * Second click → End Date
@@ -72,7 +72,7 @@ UI Rendering (Calendar + Notes)
 
 ---
 
-### 🟣 Single Date
+### Single Date
 
 * Double click → Select single date
 
