@@ -161,237 +161,300 @@ export default function Calendar() {
     }, [notes]);
 
     return (
-        <div className="h-screen font-serif flex flex-col md:flex-row overflow-hidden bg-transparent text-white">
-            {/* ================= LEFT ================= */}
-            <div className="relative w-full h-[300px] h-full">
+        <div>
+            <div className="lg:hidden min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-100 via-white to-gray-200 text-gray-900 px-6">
 
-                <svg
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                    className="absolute inset-0 w-full h-full"
-                >
-                    <defs>
-                        <clipPath id="clip">
-                            <path d={current.path} />
-                        </clipPath>
+                {/* 🌈 SOFT GLOW */}
+                <div
+                    className="absolute w-[280px] h-[280px] rounded-full blur-[120px] opacity-20"
+                    style={{ background: current.color }}
+                />
 
-                        <linearGradient id="glow" x1="0" x2="1">
-                            <stop offset="0%" stopColor="#fff" stopOpacity="0.6" />
-                            <stop offset="100%" stopColor="#fff" stopOpacity="0" />
-                        </linearGradient>
-                    </defs>
-
-                    {/* IMAGE */}
-                    {/* IMAGE */}
-                    <image
-                        href={current.image}
-                        width="100%"
-                        height="100%"
-                        preserveAspectRatio="xMidYMid slice"
-                        clipPath="url(#clip)"
-                        style={{ width: "100%", height: "100%" }}
-                    />
-
-                    {/* 🎨 COLOR OVERLAY */}
-                    <rect
-                        width="100%"
-                        height="100%"
-                        fill={current.color}
-                        opacity="0.10"
-                        clipPath="url(#clip)"
-                    />
-
-                    {/* GLOW */}
-                    <motion.path
-                        d={current.path}
-                        fill="none"
-                        stroke="url(#glow)"
-                        strokeWidth="1.5"
-                        animate={{ opacity: [0.3, 0.8, 0.3] }}
-                        transition={{ duration: 3, repeat: Infinity }}
-                    />
-                </svg>
-
-                {/* OVERLAY TEXT */}
-                <div className="absolute  bottom-10 left-10">
-
-                    {/* GLASS CARD */}
-                    <div className="relative rounded-lg px-6 py-5 bg-black/30 backdrop-blur-xl border border-white/10 shadow-2xl">
-
-                        {/* CONTENT */}
-                        <div className="flex flex-col gap-1">
-
-                            {/* MONTH (MAIN FOCUS) */}
-                            <h2
-                                className="text-2xl md:text-3xl font-bold uppercase tracking-[6px]"
-                                style={{
-                                    color: current.color,
-                                    textShadow: `0 0 15px ${current.color}88`
-                                }}
-                            >
-                                {currentMonth.format("MMMM")}
-                            </h2>
-
-                            {/* YEAR (SECONDARY) */}
-                            <p
-                                className="text-lg md:text-xl font-semibold text-white/80 tracking-wide"
-                            >
-                                {currentMonth.format("YYYY")}
-                            </p>
-
-                            {/* ACCENT LINE */}
-                            <div className="mt-2 flex items-center gap-2">
-                                <div
-                                    className="h-[3px] w-16 rounded-full"
-                                    style={{ background: current.color }}
-                                />
-                                <div className="h-[3px] w-6 bg-white/40 rounded-full" />
-                            </div>
-
-                        </div>
+                {/* 🚀 LOGO */}
+                <div className="flex flex-col items-center z-10">
+                    <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+                        <img
+                            src="/KkLogo.png"
+                            alt="logo"
+                            className="w-full h-full object-cover"
+                        />
                     </div>
+
+                    <h1 className="mt-3 text-lg font-bold tracking-wide">
+                        Smart Calendar
+                    </h1>
                 </div>
+
+                {/* ⚠️ ICON */}
+                <div className="mt-5 text-4xl z-10">
+                    ⚠️
+                </div>
+
+                {/* 🧠 MAIN CONTENT */}
+                <div className="mt-4 text-center space-y-4 max-w-xs z-10">
+
+                    <h2 className="text-base font-semibold">
+                        Mobile View Not Supported
+                    </h2>
+
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                        This application is designed for a larger screen to provide a better
+                        experience with complex interactions.
+                    </p>
+
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                        Features like
+                        <span className="text-gray-900 font-medium"> date range selection</span>,
+                        <span className="text-gray-900 font-medium"> notes management</span>, and
+                        <span className="text-gray-900 font-medium"> advanced UI interactions</span>
+                        require more screen space.
+                    </p>
+
+                    <p className="text-sm text-gray-500">
+                        Please access this application on a laptop or desktop device.
+                    </p>
+
+                </div>
+
+                {/* © FOOTER */}
+                <div className="absolute bottom-6 text-center text-[11px] text-gray-500">
+                    <p>© {new Date().getFullYear()} Kk's Pvt Ltd. All rights reserved.</p>
+                    <p className="text-gray-400 mt-1">Designed & Developed by Kk's Team</p>
+                </div>
+
             </div>
 
-            {/* ================= RIGHT ================= */}
-            <div className="absolute w-[620px] top-30 right-10 flex flex-col items-center">
+            <div className="lg:block hidden h-screen font-serif flex flex-col md:flex-row overflow-hidden bg-transparent text-white">
+                {/* ================= LEFT ================= */}
+                <div className="relative w-full h-[300px] h-full">
 
-                <div className="absolute -top-32.5 flex flex-col items-center z-20">
-                    {/* TOP PIN */}
-                    <div
-                        style={{
-                            background: ` ${current.color}`
-                        }}
-                        className="w-6 h-6 rounded-full bg-gray-600"></div>
+                    <svg
+                        viewBox="0 0 100 100"
+                        preserveAspectRatio="none"
+                        className="absolute inset-0 w-full h-full"
+                    >
+                        <defs>
+                            <clipPath id="clip">
+                                <path d={current.path} />
+                            </clipPath>
 
-                    <div
-                        style={{
-                            background: ` ${current.color}`
-                        }}
-                        className="w-1.5 absolute -left-10 top-0.5 rotate-45 h-35 -mt-1 bg-gray-600"></div>
+                            <linearGradient id="glow" x1="0" x2="1">
+                                <stop offset="0%" stopColor="#fff" stopOpacity="0.6" />
+                                <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+                            </linearGradient>
+                        </defs>
 
-                    <div
-                        style={{
-                            background: ` ${current.color}`
-                        }}
-                        className="w-1.5 absolute -right-10 top-0.5  rotate-135 h-35 -mt-1 bg-gray-600"></div>
+                        {/* IMAGE */}
+                        {/* IMAGE */}
+                        <image
+                            href={current.image}
+                            width="100%"
+                            height="100%"
+                            preserveAspectRatio="xMidYMid slice"
+                            clipPath="url(#clip)"
+                            style={{ width: "100%", height: "100%" }}
+                        />
 
+                        {/* 🎨 COLOR OVERLAY */}
+                        <rect
+                            width="100%"
+                            height="100%"
+                            fill={current.color}
+                            opacity="0.10"
+                            clipPath="url(#clip)"
+                        />
 
-                    <div
-                        style={{
-                            background: ` ${current.color}`
-                        }}
-                        className="w-6 h-6 absolute -left-23.5 top-25 rounded-full bg-gray-600"></div>
+                        {/* GLOW */}
+                        <motion.path
+                            d={current.path}
+                            fill="none"
+                            stroke="url(#glow)"
+                            strokeWidth="1.5"
+                            animate={{ opacity: [0.3, 0.8, 0.3] }}
+                            transition={{ duration: 3, repeat: Infinity }}
+                        />
+                    </svg>
 
-                    <div
-                        style={{
-                            background: ` ${current.color}`
-                        }}
-                        className="w-6 h-6 absolute -right-23.5 top-25 rounded-full bg-gray-600"></div>
+                    {/* OVERLAY TEXT */}
+                    <div className="hidden md:block absolute  bottom-10 left-10">
+
+                        {/* GLASS CARD */}
+                        <div className="relative rounded-lg px-6 py-5 bg-black/30 backdrop-blur-xl border border-white/10 shadow-2xl">
+
+                            {/* CONTENT */}
+                            <div className="flex flex-col gap-1">
+
+                                {/* MONTH (MAIN FOCUS) */}
+                                <h2
+                                    className="text-2xl md:text-3xl font-bold uppercase tracking-[6px]"
+                                    style={{
+                                        color: current.color,
+                                        textShadow: `0 0 15px ${current.color}88`
+                                    }}
+                                >
+                                    {currentMonth.format("MMMM")}
+                                </h2>
+
+                                {/* YEAR (SECONDARY) */}
+                                <p
+                                    className="text-lg md:text-xl font-semibold text-white/80 tracking-wide"
+                                >
+                                    {currentMonth.format("YYYY")}
+                                </p>
+
+                                {/* ACCENT LINE */}
+                                <div className="mt-2 flex items-center gap-2">
+                                    <div
+                                        className="h-[3px] w-16 rounded-full"
+                                        style={{ background: current.color }}
+                                    />
+                                    <div className="h-[3px] w-6 bg-white/40 rounded-full" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                {/* MAIN CARD */}
-                <div
-                    style={{
-                        background: `linear-gradient(110deg, ${current.color}, #000)`
-                    }}
-                    className="relative  mt-[-20px] rounded-lg w-full bg-gradient-to-br from-white via-gray-200 to-gray-100 shadow-[0_30px_100px_rgba(0,0,0,0.35)] p-6 flex flex-col backdrop-blur-xl "
-                >
+                {/* ================= RIGHT ================= */}
+                <div className="absolute w-[620px] top-30 right-10 flex flex-col items-center">
 
-                    <header className="mb-7">
-                        <div className="relative flex items-center justify-center">
+                    <div className="absolute -top-32.5 flex flex-col items-center z-20">
+                        {/* TOP PIN */}
+                        <div
+                            style={{
+                                background: ` ${current.color}`
+                            }}
+                            className="w-6 h-6 rounded-full bg-gray-600"></div>
 
-                            {/* LEFT BUTTON */}
-                            <button
-                                onClick={() => setCurrentMonth(currentMonth.subtract(1, "month"))}
-                                title="Previous Month"
-                                style={{
-                                    background: `linear-gradient(230deg, ${current.color}, #000)`
-                                }}
-                                className="absolute rounded-md -left-1 w-10 cursor-pointer h-10 flex items-center justify-center bg-gray-600 shadow-sm"
-                            >
-                                ←
-                            </button>
+                        <div
+                            style={{
+                                background: ` ${current.color}`
+                            }}
+                            className="w-1.5 absolute -left-10 top-0.5 rotate-45 h-35 -mt-1 bg-gray-600"></div>
 
-                            {/* CENTER TITLE */}
-                            <h3 className="text-xl md:text-xl uppercase tracking-widest font-bold"
-                                style={{
-                                    color: ` ${current.color}`
-                                }}
-                            >
-                                {currentMonth.format("MMMM, YYYY")}
-                            </h3>
+                        <div
+                            style={{
+                                background: ` ${current.color}`
+                            }}
+                            className="w-1.5 absolute -right-10 top-0.5  rotate-135 h-35 -mt-1 bg-gray-600"></div>
 
-                            {/* RIGHT BUTTON */}
-                            <button
-                                onClick={() => setCurrentMonth(currentMonth.add(1, "month"))}
-                                title="Next Month"
-                                style={{
-                                    background: ` ${current.color}`
-                                }}
-                                className="absolute rounded-md -right-1 cursor-pointer w-10  h-10 flex items-center justify-center bg-gray-600 shadow-sm"
-                            >
-                                →
-                            </button>
-                        </div>
-                    </header>
 
-                    {/* DAYS HEADER */}
-                    <div className="grid grid-cols-7 gap-3 mb-3 text-xs font-bold text-white uppercase tracking-wider relative z-10">
-                        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-                            <div key={d} className="text-center">{d}</div>
-                        ))}
+                        <div
+                            style={{
+                                background: ` ${current.color}`
+                            }}
+                            className="w-6 h-6 absolute -left-23.5 top-25 rounded-full bg-gray-600"></div>
+
+                        <div
+                            style={{
+                                background: ` ${current.color}`
+                            }}
+                            className="w-6 h-6 absolute -right-23.5 top-25 rounded-full bg-gray-600"></div>
                     </div>
 
-                    {/* GRID */}
-                    <div className="grid grid-cols-7 gap-3 relative z-10">
-                        {days.map((d, i) => (
-                            <div
-                                key={i}
-                                onClick={() => {
-                                    if (!d) return;
+                    {/* MAIN CARD */}
+                    <div
+                        style={{
+                            background: `linear-gradient(110deg, ${current.color}, #000)`
+                        }}
+                        className="relative  mt-[-20px] rounded-lg w-full bg-gradient-to-br from-white via-gray-200 to-gray-100 shadow-[0_30px_100px_rgba(0,0,0,0.35)] p-6 flex flex-col backdrop-blur-xl "
+                    >
 
-                                    // reset selected when doing range
-                                    setSelectedDate(null);
+                        <header className="mb-7">
+                            <div className="relative flex items-center justify-center">
 
-                                    if (!startDate) {
+                                {/* LEFT BUTTON */}
+                                <button
+                                    onClick={() => setCurrentMonth(currentMonth.subtract(1, "month"))}
+                                    title="Previous Month"
+                                    style={{
+                                        background: `linear-gradient(230deg, ${current.color}, #000)`
+                                    }}
+                                    className="absolute rounded-md -left-1 w-10 cursor-pointer h-10 flex items-center justify-center bg-gray-600 shadow-sm"
+                                >
+                                    ←
+                                </button>
+
+                                {/* CENTER TITLE */}
+                                <h3 className="text-xl md:text-xl uppercase tracking-widest font-bold"
+                                    style={{
+                                        color: ` ${current.color}`
+                                    }}
+                                >
+                                    {currentMonth.format("MMMM, YYYY")}
+                                </h3>
+
+                                {/* RIGHT BUTTON */}
+                                <button
+                                    onClick={() => setCurrentMonth(currentMonth.add(1, "month"))}
+                                    title="Next Month"
+                                    style={{
+                                        background: ` ${current.color}`
+                                    }}
+                                    className="absolute rounded-md -right-1 cursor-pointer w-10  h-10 flex items-center justify-center bg-gray-600 shadow-sm"
+                                >
+                                    →
+                                </button>
+                            </div>
+                        </header>
+
+                        {/* DAYS HEADER */}
+                        <div className="grid grid-cols-7 gap-3 mb-3 text-xs font-bold text-white uppercase tracking-wider relative z-10">
+                            {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
+                                <div key={d} className="text-center">{d}</div>
+                            ))}
+                        </div>
+
+                        {/* GRID */}
+                        <div className="grid grid-cols-7 gap-3 relative z-10">
+                            {days.map((d, i) => (
+                                <div
+                                    key={i}
+                                    onClick={() => {
+                                        if (!d) return;
+
+                                        // reset selected when doing range
+                                        setSelectedDate(null);
+
+                                        if (!startDate) {
+                                            setStartDate(d);
+                                            setEndDate(null);
+                                            return;
+                                        }
+
+                                        if (startDate && !endDate) {
+                                            if (d.isBefore(startDate)) {
+                                                setStartDate(d);
+                                            } else {
+                                                setEndDate(d);
+                                            }
+                                            return;
+                                        }
+
+                                        // reset
                                         setStartDate(d);
                                         setEndDate(null);
-                                        return;
-                                    }
+                                    }}
 
-                                    if (startDate && !endDate) {
-                                        if (d.isBefore(startDate)) {
-                                            setStartDate(d);
-                                        } else {
-                                            setEndDate(d);
-                                        }
-                                        return;
-                                    }
+                                    onDoubleClick={() => {
+                                        if (!d) return;
 
-                                    // reset
-                                    setStartDate(d);
-                                    setEndDate(null);
-                                }}
+                                        setStartDate(null);
+                                        setEndDate(null);
+                                        setSelectedDate(d);
+                                    }}
 
-                                onDoubleClick={() => {
-                                    if (!d) return;
+                                    style={{
+                                        background:
+                                            d?.isSame(dayjs(), "day") &&
+                                                !d?.isSame(startDate, "day") &&
+                                                !d?.isSame(endDate, "day")
+                                                ? `${current.color}`
+                                                : undefined
+                                    }}
 
-                                    setStartDate(null);
-                                    setEndDate(null);
-                                    setSelectedDate(d);
-                                }}
-
-                                style={{
-                                    background:
-                                        d?.isSame(dayjs(), "day") &&
-                                            !d?.isSame(startDate, "day") &&
-                                            !d?.isSame(endDate, "day")
-                                            ? `${current.color}`
-                                            : undefined
-                                }}
-
-                                className={`
+                                    className={`
 relative h-14 flex items-center justify-center rounded-xl cursor-pointer 
 transition-all duration-300 font-semibold shadow-md ring ring-gray-300/20
 
@@ -399,316 +462,316 @@ ${!d ? "opacity-0" : ""}
 
 /* 🟢 START */
 ${startDate && d?.isSame(startDate, "day")
-                                        ? "bg-green-500 text-white scale-110"
-                                        : ""}
+                                            ? "bg-green-500 text-white scale-110"
+                                            : ""}
 
 /* 🔵 END */
 ${endDate && d?.isSame(endDate, "day")
-                                        ? "bg-blue-500 text-white scale-110"
-                                        : ""}
+                                            ? "bg-blue-500 text-white scale-110"
+                                            : ""}
 
 /* 🔷 RANGE */
 ${startDate && endDate &&
-                                        d?.isAfter(startDate) &&
-                                        d?.isBefore(endDate)
-                                        ? "bg-blue-200 text-black"
-                                        : ""}
+                                            d?.isAfter(startDate) &&
+                                            d?.isBefore(endDate)
+                                            ? "bg-blue-200 text-black"
+                                            : ""}
 
 /* 🟣 SINGLE */
 ${selectedDate && d?.isSame(selectedDate, "day")
-                                        ? "bg-gray-800 text-white scale-110"
-                                        : ""}
+                                            ? "bg-gray-800 text-white scale-110"
+                                            : ""}
 
 /* ⚪ DEFAULT */
 ${!startDate && !endDate && !selectedDate
-                                        ? "bg-white/10 hover:scale-105"
-                                        : ""}
+                                            ? "bg-white/10 hover:scale-105"
+                                            : ""}
 `}
-                            >
-                                {d?.date()}
+                                >
+                                    {d?.date()}
 
-                                {d && (() => {
-                                    const dateStr = d.format("YYYY-MM-DD");
+                                    {d && (() => {
+                                        const dateStr = d.format("YYYY-MM-DD");
 
-                                    const hasSingle = notes[dateStr];
+                                        const hasSingle = notes[dateStr];
 
-                                    const rangeKey = Object.keys(notes).find(k => k.includes("_") && (() => {
-                                        const [start, end] = k.split("_");
-                                        return dateStr >= start && dateStr <= end;
-                                    })());
+                                        const rangeKey = Object.keys(notes).find(k => k.includes("_") && (() => {
+                                            const [start, end] = k.split("_");
+                                            return dateStr >= start && dateStr <= end;
+                                        })());
 
-                                    const isRangeStart = rangeKey && dateStr === rangeKey.split("_")[0];
-                                    const isRangeEnd = rangeKey && dateStr === rangeKey.split("_")[1];
-                                    const isRangeMiddle = rangeKey && !isRangeStart && !isRangeEnd;
+                                        const isRangeStart = rangeKey && dateStr === rangeKey.split("_")[0];
+                                        const isRangeEnd = rangeKey && dateStr === rangeKey.split("_")[1];
+                                        const isRangeMiddle = rangeKey && !isRangeStart && !isRangeEnd;
 
-                                    return (
-                                        <>
-                                            {/* 🔷 RANGE BACKGROUND LINE */}
-                                            {/* 🔷 RANGE MIDDLE */}
-                                            {isRangeMiddle && (
-                                                <div
-                                                    className="absolute w-13 bottom-0 left-2.5 h-[2.5px] rounded-b-full"
-                                                    style={{
-                                                        background: "linear-gradient(135deg, #f97316, #ec4899)",
-                                                        boxShadow: "0 0 5px rgba(34,197,94,0.8)"
-                                                    }}
-                                                />
-                                            )}
+                                        return (
+                                            <>
+                                                {/* 🔷 RANGE BACKGROUND LINE */}
+                                                {/* 🔷 RANGE MIDDLE */}
+                                                {isRangeMiddle && (
+                                                    <div
+                                                        className="absolute w-13 bottom-0 left-2.5 h-[2.5px] rounded-b-full"
+                                                        style={{
+                                                            background: "linear-gradient(135deg, #f97316, #ec4899)",
+                                                            boxShadow: "0 0 5px rgba(34,197,94,0.8)"
+                                                        }}
+                                                    />
+                                                )}
 
-                                            {/* 🔵 RANGE START / END */}
-                                            {(isRangeStart || isRangeEnd) && (
-                                                <div
-                                                    className="absolute bottom-1 border w-2 h-2 rounded-full"
-                                                    style={{
-                                                        background: "linear-gradient(135deg, #f97316, #ec4899",
-                                                        boxShadow: "0 0 10px rgba(34,197,94,0.8)"
-                                                    }}
-                                                />
-                                            )}
+                                                {/* 🔵 RANGE START / END */}
+                                                {(isRangeStart || isRangeEnd) && (
+                                                    <div
+                                                        className="absolute bottom-1 border w-2 h-2 rounded-full"
+                                                        style={{
+                                                            background: "linear-gradient(135deg, #f97316, #ec4899",
+                                                            boxShadow: "0 0 10px rgba(34,197,94,0.8)"
+                                                        }}
+                                                    />
+                                                )}
 
-                                            {/* 🔵 SINGLE ONLY */}
-                                            {hasSingle && !rangeKey && (
-                                                <div
-                                                    className="absolute bottom-1.5 w-2 h-2 rounded-full border border-white"
-                                                    style={{
-                                                        background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
-                                                        boxShadow: "0 0 6px rgba(37,99,235,0.9)"
-                                                    }}
-                                                />
-                                            )}
+                                                {/* 🔵 SINGLE ONLY */}
+                                                {hasSingle && !rangeKey && (
+                                                    <div
+                                                        className="absolute bottom-1.5 w-2 h-2 rounded-full border border-white"
+                                                        style={{
+                                                            background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+                                                            boxShadow: "0 0 6px rgba(37,99,235,0.9)"
+                                                        }}
+                                                    />
+                                                )}
 
-                                            {/* ⭐ BOTH (SINGLE + RANGE OVERLAP) */}
-                                            {hasSingle && rangeKey && (
-                                                <div className="absolute top-2.5 flex border items-center justify-center">
+                                                {/* ⭐ BOTH (SINGLE + RANGE OVERLAP) */}
+                                                {hasSingle && rangeKey && (
+                                                    <div className="absolute top-2.5 flex border items-center justify-center">
 
-                                                    {/* sparkle */}
-                                                    <span
-                                                        className="absolute text-[12px]"
-                                                    >
-                                                        ✨
-                                                    </span>
-                                                </div>
-                                            )}
-                                        </>
-                                    );
-                                })()}
-                            </div>
-                        ))}
-
-                    </div>
-                </div>
-
-                {/* NOTE CARD */}
-                {(selectedDate || (startDate && endDate && !endDate.isSame(startDate, "day"))) && (
-                    <motion.div
-                        drag
-                        dragMomentum={false}
-                        onDragEnd={(e, info) => {
-                            setPosition({
-                                x: position.x + info.offset.x,
-                                y: position.y + info.offset.y
-                            });
-                        }}
-                        style={{
-                            x: position.x,
-                            y: position.y
-                        }}
-                        className="fixed top-69 right-170 z-50 cursor-grab active:cursor-grabbing"
-                    >
-                        {/* 💎 NOTE CARD */}
-                        <div className="w-[400px] rounded-lg backdrop-blur-xl bg-white/10 border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden">
-                            {/* 🎯 DRAG HEADER */}
-                            <div
-                                className="px-5 py-3 text-sm font-semibold flex justify-between items-center"
-                                style={{
-                                    background: `linear-gradient(135deg, ${current.color}, #000)`
-                                }}
-                            >
-                                <div className="flex items-center gap-2">
-                                    <StickyNote size={18} />
-                                    <span className="tracking-wide">Notes</span>
+                                                        {/* sparkle */}
+                                                        <span
+                                                            className="absolute text-[12px]"
+                                                        >
+                                                            ✨
+                                                        </span>
+                                                    </div>
+                                                )}
+                                            </>
+                                        );
+                                    })()}
                                 </div>
+                            ))}
 
-                                <span className="text-xs opacity-80 uppercase tracking-wide text-gray-300">
-                                    {selectedDate && selectedDate.format("MMM D, YYYY")}
-                                    {startDate && !endDate && startDate.format("MMM D, YYYY")}
-                                    {startDate && endDate &&
-                                        `${startDate.format("MMM D")} → ${endDate.format("MMM D, YYYY")}`}
-                                </span>
-                            </div>
+                        </div>
+                    </div>
 
-                            {/* ✍️ TEXTAREA */}
-                            <div className="p-4">
-                                <textarea
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
-                                    placeholder="Write something meaningful..."
-                                    className="w-full h-40 font-serif p-4 rounded-md bg-white/90 text-gray-800 
-  outline-none resize-none transition-all duration-300
-  focus:scale-[1.02] focus:shadow-xl"
-                                />
-                            </div>
-
-                            {/* 🚀 ACTIONS */}
-                            <div className="flex items-center gap-2 px-4 pb-4">
-                                {/* SAVE BUTTON */}
-                                <button
-                                    onClick={() => {
-                                        if (!key) {
-                                            toast.error("Please select a date or range");
-                                            return;
-                                        }
-
-                                        if (!input.trim()) {
-                                            toast.warning("Note cannot be empty");
-                                            return;
-                                        }
-
-                                        if (input.trim().length < 3) {
-                                            toast.error("Note too short (min 3 chars)");
-                                            return;
-                                        }
-
-                                        setNotes(prev => ({
-                                            ...prev,
-                                            [key]: input
-                                        }));
-
-                                        toast.success("Note saved successfully");
-
-                                        setSelectedDate(null);
-                                        setStartDate(null);
-                                        setEndDate(null);
-                                        setInput("");
-                                    }}
-                                    className="px-5 cursor-pointer py-1.5 rounded-md text-sm font-semibold text-white transition hover:scale-105"
+                    {/* NOTE CARD */}
+                    {(selectedDate || (startDate && endDate && !endDate.isSame(startDate, "day"))) && (
+                        <motion.div
+                            drag
+                            dragMomentum={false}
+                            onDragEnd={(e, info) => {
+                                setPosition({
+                                    x: position.x + info.offset.x,
+                                    y: position.y + info.offset.y
+                                });
+                            }}
+                            style={{
+                                x: position.x,
+                                y: position.y
+                            }}
+                            className="fixed top-69 right-170 z-50 cursor-grab active:cursor-grabbing"
+                        >
+                            {/* 💎 NOTE CARD */}
+                            <div className="w-[400px] rounded-lg backdrop-blur-xl bg-white/10 border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden">
+                                {/* 🎯 DRAG HEADER */}
+                                <div
+                                    className="px-5 py-3 text-sm font-semibold flex justify-between items-center"
                                     style={{
-                                        background: current.color
+                                        background: `linear-gradient(135deg, ${current.color}, #000)`
                                     }}
                                 >
-                                    <span className="flex items-center gap-2">
-                                        <Save size={16} />
-                                        Save
+                                    <div className="flex items-center gap-2">
+                                        <StickyNote size={18} />
+                                        <span className="tracking-wide">Notes</span>
+                                    </div>
+
+                                    <span className="text-xs opacity-80 uppercase tracking-wide text-gray-300">
+                                        {selectedDate && selectedDate.format("MMM D, YYYY")}
+                                        {startDate && !endDate && startDate.format("MMM D, YYYY")}
+                                        {startDate && endDate &&
+                                            `${startDate.format("MMM D")} → ${endDate.format("MMM D, YYYY")}`}
                                     </span>
-                                </button>
+                                </div>
 
+                                {/* ✍️ TEXTAREA */}
+                                <div className="p-4">
+                                    <textarea
+                                        value={input}
+                                        onChange={(e) => setInput(e.target.value)}
+                                        placeholder="Write something meaningful..."
+                                        className="w-full h-40 font-serif p-4 rounded-md bg-white/90 text-gray-800 
+  outline-none resize-none transition-all duration-300
+  focus:scale-[1.02] focus:shadow-xl"
+                                    />
+                                </div>
 
-                                {/* DELETE BUTTON (ONLY IF NOTE EXISTS) */}
-                                {key && notes[key] && (
+                                {/* 🚀 ACTIONS */}
+                                <div className="flex items-center gap-2 px-4 pb-4">
+                                    {/* SAVE BUTTON */}
                                     <button
                                         onClick={() => {
-                                            if (!confirm("Delete this note?")) return;
+                                            if (!key) {
+                                                toast.error("Please select a date or range");
+                                                return;
+                                            }
 
-                                            setNotes(prev => {
-                                                const updated = { ...prev };
-                                                delete updated[key];
-                                                return updated;
-                                            });
+                                            if (!input.trim()) {
+                                                toast.warning("Note cannot be empty");
+                                                return;
+                                            }
 
-                                            setInput("");
+                                            if (input.trim().length < 3) {
+                                                toast.error("Note too short (min 3 chars)");
+                                                return;
+                                            }
+
+                                            setNotes(prev => ({
+                                                ...prev,
+                                                [key]: input
+                                            }));
+
+                                            toast.success("Note saved successfully");
+
                                             setSelectedDate(null);
                                             setStartDate(null);
                                             setEndDate(null);
+                                            setInput("");
                                         }}
-                                        className="px-4 py-1.5 rounded-md cursor-pointer text-sm font-semibold text-white 
-    bg-red-500 hover:bg-red-600 transition hover:scale-105"
+                                        className="px-5 cursor-pointer py-1.5 rounded-md text-sm font-semibold text-white transition hover:scale-105"
+                                        style={{
+                                            background: current.color
+                                        }}
                                     >
                                         <span className="flex items-center gap-2">
-                                            <Trash2 size={16} />
-                                            Delete
+                                            <Save size={16} />
+                                            Save
                                         </span>
                                     </button>
-                                )}
 
-                                <button
-                                    onClick={() => {
-                                        if (input && input !== notes[key]) {
-                                            if (!confirm("Discard changes?")) return;
-                                        }
 
-                                        setSelectedDate(null);
-                                        setStartDate(null);
-                                        setEndDate(null);
-                                        setInput("");
-                                    }}
+                                    {/* DELETE BUTTON (ONLY IF NOTE EXISTS) */}
+                                    {key && notes[key] && (
+                                        <button
+                                            onClick={() => {
+                                                if (!confirm("Delete this note?")) return;
 
-                                    className="px-5 cursor-pointer py-1.5 rounded-md text-sm font-semibold text-gray-500 transition hover:scale-105"
+                                                setNotes(prev => {
+                                                    const updated = { ...prev };
+                                                    delete updated[key];
+                                                    return updated;
+                                                });
+
+                                                setInput("");
+                                                setSelectedDate(null);
+                                                setStartDate(null);
+                                                setEndDate(null);
+                                            }}
+                                            className="px-4 py-1.5 rounded-md cursor-pointer text-sm font-semibold text-white 
+    bg-red-500 hover:bg-red-600 transition hover:scale-105"
+                                        >
+                                            <span className="flex items-center gap-2">
+                                                <Trash2 size={16} />
+                                                Delete
+                                            </span>
+                                        </button>
+                                    )}
+
+                                    <button
+                                        onClick={() => {
+                                            if (input && input !== notes[key]) {
+                                                if (!confirm("Discard changes?")) return;
+                                            }
+
+                                            setSelectedDate(null);
+                                            setStartDate(null);
+                                            setEndDate(null);
+                                            setInput("");
+                                        }}
+
+                                        className="px-5 cursor-pointer py-1.5 rounded-md text-sm font-semibold text-gray-500 transition hover:scale-105"
+                                        style={{
+                                            background: "rgba(255,255,255,0.7)"
+                                        }}
+                                    >
+                                        <span className="flex items-center gap-2">
+                                            <X size={16} />
+                                            Close
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* NOTES LIST */}
+                    <div
+                        style={{
+                            borderTopColor: current.color
+                        }}
+                        className="mt-6 pb-5 w-full max-h-[250px] overflow-y-auto border-t-2  space-y-4">
+                        {/* DATA EXISTS */}
+                        {groupedNotes?.[currentMonthKey] && (
+                            <div className="space-y-3">
+
+                                {/*  HEADER */}
+                                <div
+                                    className="px-4 py-2 mt-3 uppercase rounded-lg text-sm font-bold tracking-widest backdrop-blur-xl"
                                     style={{
-                                        background: "rgba(255,255,255,0.7)"
+                                        background: `linear-gradient(135deg, ${current.color}, #000)`,
                                     }}
                                 >
-                                    <span className="flex items-center gap-2">
-                                        <X size={16} />
-                                        Close
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
+                                    {currentMonthKey}
+                                </div>
 
-                {/* NOTES LIST */}
-                <div
-                    style={{
-                        borderTopColor: current.color
-                    }}
-                    className="mt-6 pb-5 w-full max-h-[250px] overflow-y-auto border-t-2  space-y-4">
-                    {/* DATA EXISTS */}
-                    {groupedNotes?.[currentMonthKey] && (
-                        <div className="space-y-3">
+                                {/* 📦 NOTES */}
+                                <div className="space-y-3">
+                                    {groupedNotes[currentMonthKey].map(({ key, value }) => {
+                                        const isRange = key.includes("_");
 
-                            {/*  HEADER */}
-                            <div
-                                className="px-4 py-2 mt-3 uppercase rounded-lg text-sm font-bold tracking-widest backdrop-blur-xl"
-                                style={{
-                                    background: `linear-gradient(135deg, ${current.color}, #000)`,
-                                }}
-                            >
-                                {currentMonthKey}
-                            </div>
+                                        let label = "";
 
-                            {/* 📦 NOTES */}
-                            <div className="space-y-3">
-                                {groupedNotes[currentMonthKey].map(({ key, value }) => {
-                                    const isRange = key.includes("_");
+                                        if (isRange) {
+                                            const [start, end] = key.split("_");
+                                            label = `${dayjs(start).format("MMM DD")} → ${dayjs(end).format("MMM DD")}`;
+                                        } else {
+                                            label = dayjs(key).format("MMM DD, YYYY");
+                                        }
 
-                                    let label = "";
-
-                                    if (isRange) {
-                                        const [start, end] = key.split("_");
-                                        label = `${dayjs(start).format("MMM DD")} → ${dayjs(end).format("MMM DD")}`;
-                                    } else {
-                                        label = dayjs(key).format("MMM DD, YYYY");
-                                    }
-
-                                    return (
-                                        <div
-                                            key={key}
-                                            className={`p-4 rounded-md backdrop-blur-xl border border-gray-300/50`}
-                                        >
-                                            {/* 📅 DATE */}
-                                            <p
-                                                className="text-xs uppercase font-semibold mb-1"
-                                                style={{
-                                                    color: current.color,
-                                                    textShadow: `0 0 6px ${current.color}`
-                                                }}
+                                        return (
+                                            <div
+                                                key={key}
+                                                className={`p-4 rounded-md backdrop-blur-xl border border-gray-300/50`}
                                             >
-                                                {label}
-                                            </p>
+                                                {/* 📅 DATE */}
+                                                <p
+                                                    className="text-xs uppercase font-semibold mb-1"
+                                                    style={{
+                                                        color: current.color,
+                                                    }}
+                                                >
+                                                    {label}
+                                                </p>
 
-                                            {/* 📝 NOTE */}
-                                            <p className="text-sm text-black/90 font-serif leading-relaxed">
-                                                {value}
-                                            </p>
-                                        </div>
-                                    );
-                                })}
+                                                {/* 📝 NOTE */}
+                                                <p className="text-sm text-black/90 bg-transparent font-serif leading-relaxed">
+                                                    {value}
+                                                </p>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </div>
-            </div>
-        </div >
+            </div >
+        </div>
     );
 }
