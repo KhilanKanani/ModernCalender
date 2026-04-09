@@ -164,7 +164,7 @@ export default function Calendar() {
     return (
         <div>
 
-            <div className="lg:hidden min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-100 via-white to-gray-200 text-gray-900 px-6">
+            <div className="md:hidden min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-100 via-white to-gray-200 text-gray-900 px-6">
 
                 {/* 🌈 SOFT GLOW */}
                 <div
@@ -173,9 +173,11 @@ export default function Calendar() {
                 />
 
                 {/* 💻 ICON */}
-                <div className="mt-6 z-10 text-gray-700">
-                    <Monitor size={40} />
-                </div>
+                    <img
+                        src="/KkLogo.png"
+                        alt="Logo"
+                        className="w-auto h-20"
+                    />
 
                 {/* 🧠 TEXT */}
                 <div className="mt-5 text-center space-y-3 max-w-xs z-10">
@@ -202,7 +204,7 @@ export default function Calendar() {
 
             </div>
 
-            <div className="lg:block hidden h-screen font-serif flex flex-col md:flex-row overflow-hidden bg-transparent text-white">
+            <div className=" hidden h-screen font-serif md:flex flex-col md:flex-row overflow-hidden bg-transparent text-white">
                 {/* ================= LEFT ================= */}
                 <div className="relative w-full h-[300px] h-full">
 
@@ -264,7 +266,7 @@ export default function Calendar() {
 
                                 {/* MONTH (MAIN FOCUS) */}
                                 <h2
-                                    className="text-2xl md:text-3xl font-bold uppercase tracking-[6px]"
+                                    className="text-xl lg:text-3xl font-bold uppercase tracking-[6px]"
                                     style={{
                                         color: current.color,
                                         textShadow: `0 0 15px ${current.color}88`
@@ -275,7 +277,7 @@ export default function Calendar() {
 
                                 {/* YEAR (SECONDARY) */}
                                 <p
-                                    className="text-lg md:text-xl font-semibold text-white/80 tracking-wide"
+                                    className="text-lg lg:text-xl font-semibold text-white/80 tracking-wide"
                                 >
                                     {currentMonth.format("YYYY")}
                                 </p>
@@ -295,7 +297,7 @@ export default function Calendar() {
                 </div>
 
                 {/* ================= RIGHT ================= */}
-                <div className="absolute w-[620px] top-30 right-10 flex flex-col items-center">
+                <div className="absolute w-sm lg:w-[620px] top-30 right-10 flex flex-col items-center">
 
                     <div className="absolute -top-32.5 flex flex-col items-center z-20">
                         {/* TOP PIN */}
@@ -336,7 +338,7 @@ export default function Calendar() {
                         style={{
                             background: `linear-gradient(110deg, ${current.color}, #000)`
                         }}
-                        className="relative  mt-[-20px] rounded-lg w-full bg-gradient-to-br from-white via-gray-200 to-gray-100 shadow-[0_30px_100px_rgba(0,0,0,0.35)] p-6 flex flex-col backdrop-blur-xl "
+                        className="relative mt-[-20px] rounded-lg w-full bg-gradient-to-br from-white via-gray-200 to-gray-100 shadow-[0_30px_100px_rgba(0,0,0,0.35)] p-6 flex flex-col backdrop-blur-xl "
                     >
 
                         <header className="mb-7">
@@ -349,13 +351,13 @@ export default function Calendar() {
                                     style={{
                                         background: `linear-gradient(230deg, ${current.color}, #000)`
                                     }}
-                                    className="absolute rounded-md -left-1 w-10 cursor-pointer h-10 flex items-center justify-center bg-gray-600 shadow-sm"
+                                    className="absolute rounded-md -left-1 lg:w-10 cursor-pointer w-8 h-8 lg:h-10 flex items-center justify-center bg-gray-600 shadow-sm"
                                 >
                                     ←
                                 </button>
 
                                 {/* CENTER TITLE */}
-                                <h3 className="text-xl md:text-xl uppercase tracking-widest font-bold"
+                                <h3 className="text-lg lg:text-xl uppercase tracking-widest font-bold"
                                     style={{
                                         color: ` ${current.color}`
                                     }}
@@ -370,7 +372,7 @@ export default function Calendar() {
                                     style={{
                                         background: ` ${current.color}`
                                     }}
-                                    className="absolute rounded-md -right-1 cursor-pointer w-10  h-10 flex items-center justify-center bg-gray-600 shadow-sm"
+                                    className="absolute rounded-md -right-1 cursor-pointer lg:w-10 w-8 h-8 lg:h-10 flex items-center justify-center bg-gray-600 shadow-sm"
                                 >
                                     →
                                 </button>
@@ -378,7 +380,7 @@ export default function Calendar() {
                         </header>
 
                         {/* DAYS HEADER */}
-                        <div className="grid grid-cols-7 gap-3 mb-3 text-xs font-bold text-white uppercase tracking-wider relative z-10">
+                        <div className="grid grid-cols-7 gap-3 mb-3 lg:text-xs text-[10px] font-bold text-white uppercase tracking-wider relative z-10">
                             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
                                 <div key={d} className="text-center">{d}</div>
                             ))}
@@ -433,8 +435,8 @@ export default function Calendar() {
                                     }}
 
                                     className={`
-relative h-14 flex items-center justify-center rounded-xl cursor-pointer 
-transition-all duration-300 font-semibold shadow-md ring ring-gray-300/20
+relative h-10 lg:h-14 flex items-center justify-center rounded-xl cursor-pointer 
+transition-all duration-300 font-semibold shadow-md ring ring-gray-300/20 lg:text-base text-xs
 
 ${!d ? "opacity-0" : ""}
 
@@ -484,11 +486,10 @@ ${!startDate && !endDate && !selectedDate
 
                                         return (
                                             <>
-                                                {/* 🔷 RANGE BACKGROUND LINE */}
                                                 {/* 🔷 RANGE MIDDLE */}
                                                 {isRangeMiddle && (
                                                     <div
-                                                        className="absolute w-13 bottom-0 left-2.5 h-[2.5px] rounded-b-full"
+                                                        className="absolute w-5.5 lg:w-13 bottom-0 left-2 lg:left-2.5 h-[2px] lg:h-[2.5px] rounded-b-full"
                                                         style={{
                                                             background: "linear-gradient(135deg, #f97316, #ec4899)",
                                                             boxShadow: "0 0 5px rgba(34,197,94,0.8)"
@@ -499,7 +500,7 @@ ${!startDate && !endDate && !selectedDate
                                                 {/* 🔵 RANGE START / END */}
                                                 {(isRangeStart || isRangeEnd) && (
                                                     <div
-                                                        className="absolute bottom-1 border w-2 h-2 rounded-full"
+                                                        className="absolute bottom-1 border lg:w-2 lg:h-2 w-1.5 h-1.5 rounded-full"
                                                         style={{
                                                             background: "linear-gradient(135deg, #f97316, #ec4899",
                                                             boxShadow: "0 0 10px rgba(34,197,94,0.8)"
@@ -510,7 +511,7 @@ ${!startDate && !endDate && !selectedDate
                                                 {/* 🔵 SINGLE ONLY */}
                                                 {hasSingle && !rangeKey && (
                                                     <div
-                                                        className="absolute bottom-1.5 w-2 h-2 rounded-full border border-white"
+                                                        className="absolute bottom-1 lg:w-2 lg:h-2 w-1.5 h-1.5 rounded-full border border-white"
                                                         style={{
                                                             background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
                                                             boxShadow: "0 0 6px rgba(37,99,235,0.9)"
@@ -554,10 +555,10 @@ ${!startDate && !endDate && !selectedDate
                                 x: position.x,
                                 y: position.y
                             }}
-                            className="fixed top-69 right-170 z-50 cursor-grab active:cursor-grabbing"
+                            className="fixed top-25 lg:top-69 right-110 lg:right-170 z-50 cursor-grab active:cursor-grabbing"
                         >
                             {/* 💎 NOTE CARD */}
-                            <div className="w-[400px] rounded-lg backdrop-blur-xl bg-white/10 border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden">
+                            <div className="w-[300px] lg:w-[400px] rounded-lg backdrop-blur-xl bg-white/10 border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden">
                                 {/* 🎯 DRAG HEADER */}
                                 <div
                                     className="px-5 py-3 text-sm font-semibold flex justify-between items-center"
@@ -584,7 +585,7 @@ ${!startDate && !endDate && !selectedDate
                                         value={input}
                                         onChange={(e) => setInput(e.target.value)}
                                         placeholder="Write something meaningful..."
-                                        className="w-full h-40 font-serif p-4 rounded-md bg-white/90 text-gray-800 
+                                        className="w-full lg:h-40 h-30 text-sm lg:text-base font-serif p-4 rounded-md bg-white/90 text-gray-800 
   outline-none resize-none transition-all duration-300
   focus:scale-[1.02] focus:shadow-xl"
                                     />
@@ -628,7 +629,7 @@ ${!startDate && !endDate && !selectedDate
                                         }}
                                     >
                                         <span className="flex items-center gap-2">
-                                            <Save size={16} />
+                                            <Save className="lg:block hidden" size={16} />
                                             Save
                                         </span>
                                     </button>
@@ -655,7 +656,7 @@ ${!startDate && !endDate && !selectedDate
     bg-red-500 hover:bg-red-600 transition hover:scale-105"
                                         >
                                             <span className="flex items-center gap-2">
-                                                <Trash2 size={16} />
+                                                <Trash2 className="lg:block hidden" size={16} />
                                                 Delete
                                             </span>
                                         </button>
@@ -679,7 +680,7 @@ ${!startDate && !endDate && !selectedDate
                                         }}
                                     >
                                         <span className="flex items-center gap-2">
-                                            <X size={16} />
+                                            <X className="lg:block hidden" size={16} />
                                             Close
                                         </span>
                                     </button>
@@ -693,7 +694,7 @@ ${!startDate && !endDate && !selectedDate
                         style={{
                             borderTopColor: current.color
                         }}
-                        className="mt-6 pb-5 w-full max-h-[250px] overflow-y-auto border-t-2  space-y-4">
+                        className="mt-6 pb-5 w-full max-h-[220px] lg:max-h-[250px] overflow-y-auto border-t-2  space-y-4">
                         {/* DATA EXISTS */}
                         {groupedNotes?.[currentMonthKey] && (
                             <div className="space-y-3">
